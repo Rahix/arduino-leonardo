@@ -5,13 +5,11 @@
 extern crate atmega32u4;
 extern crate atmega32u4_hal;
 
-use atmega32u4_hal::{delay, port};
-
+use atmega32u4_hal::delay;
 pub type Delay = delay::Delay<delay::MHz16>;
 
-pub type LedBuiltin = port::portc::PC7<port::Output>;
-pub type LedBuiltinRX = port::portb::PB0<port::Output>;
-pub type LedBuiltinTX = port::portd::PD5<port::Output>;
+pub mod pins;
+pub use pins::*;
 
 pub mod std {
     use super::atmega32u4;
