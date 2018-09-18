@@ -1,0 +1,14 @@
+[package]
+authors = ["Rahix <rahix@rahix.de>"]
+name = "arduino-leonardo"
+version = "0.1.0"
+
+[dependencies]
+
+[dependencies.atmega32u4]
+optional = false
+path = "../atmega32u4"
+
+[dependencies.atmega32u4-hal]
+optional = false
+path = "../atmega32u4-hal"
