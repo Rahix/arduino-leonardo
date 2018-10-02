@@ -2,6 +2,17 @@ use atmega32u4;
 
 define_pins! {
     /// Convenience wrapper for easy access to Arduino Leonardo pins
+    ///
+    /// # Example
+    /// ```
+    /// let dp = arduino_leonardo::Peripherals::take().unwrap();
+    ///
+    /// let mut pins = arduino_leonardo::Pins::new(dp.PORTB, dp.PORTC, dp.PORTD, dp.PORTE);
+    ///
+    /// // Notic that we can use `pins.ddr` for all pins.  It is generic over the
+    /// // different ports.
+    /// let mut led = pins.d13.into_output(pins.ddr);
+    /// ```
     name: Pins,
     ddr: DDR {
         portb: atmega32u4::PORTB,
