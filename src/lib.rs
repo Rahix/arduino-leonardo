@@ -1,7 +1,6 @@
 #![no_std]
 #![feature(lang_items, unwind_attributes)]
 
-
 extern crate atmega32u4;
 extern crate atmega32u4_hal;
 
@@ -11,6 +10,13 @@ pub type Delay = delay::Delay<delay::MHz16>;
 pub mod pins;
 pub use pins::*;
 
+pub use atmega32u4::Peripherals;
+
+pub mod prelude {
+    pub use atmega32u4_hal::prelude::*;
+}
+
+#[cfg(not(feature = "docs"))]
 pub mod std {
     use super::atmega32u4;
 

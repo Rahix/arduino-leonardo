@@ -3,11 +3,12 @@ authors = ["Rahix <rahix@rahix.de>"]
 name = "arduino-leonardo"
 version = "0.1.0"
 
-[dependencies]
+[features]
+docs = ["atmega32u4-hal/docs"]
 
-[dependencies.atmega32u4]
-optional = false
-path = "../atmega32u4"
+[dependencies]
+atmega32u4 = "0.1.3"
+# atmega32u4 = { path="../atmega32u4" }
 
 [dependencies.atmega32u4-hal]
 optional = false
