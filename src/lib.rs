@@ -2,13 +2,14 @@
 #![feature(lang_items, unwind_attributes)]
 
 extern crate atmega32u4;
+#[macro_use]
 extern crate atmega32u4_hal;
 
 use atmega32u4_hal::delay;
 pub type Delay = delay::Delay<delay::MHz16>;
 
 pub mod pins;
-pub use pins::*;
+pub use pins::{Pins, DDR};
 
 pub use atmega32u4::Peripherals;
 
