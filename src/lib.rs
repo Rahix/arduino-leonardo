@@ -1,5 +1,51 @@
+//! Board Support Crate for Arduino Leonardo
+//! ========================================
+//!
+//! Reexports with the naming scheme from leonardo's
+//! labels.
+//!
+//! Also contains a panic handler that rapidly blinks RX and TX leds.
+//!
+//! ## Example
+//! ```rust
+//! #![no_std]
+//! #![no_main]
+//! extern crate arduino_leonardo;
+//!
+//! use arduino_leonardo::prelude::*;
+//!
+//! #[no_mangle]
+//! pub extern fn main() {
+//!     let dp = arduino_leonardo::Peripherals::take().unwrap();
+//!
+//!     let mut delay = arduino_leonardo::Delay::new();
+//!     let mut pins = arduino_leonardo::Pins::new(dp.PORTB, dp.PORTC, dp.PORTD, dp.PORTE);
+//!
+//!     let mut led0 = pins.led_rx.into_output(&mut pins.ddr);
+//!     let mut led1 = pins.led_tx.into_output(&mut pins.ddr);
+//!     let mut led2 = pins.d13.into_output(&mut pins.ddr);
+//!
+//!     led0.set_high();
+//!     led1.set_high();
+//!     led2.set_high();
+//!
+//!     let mut leds = [
+//!         led0.downgrade(),
+//!         led1.downgrade(),
+//!         led2.downgrade(),
+//!     ];
+//!
+//!     loop {
+//!         for i in 0..3 {
+//!             leds[i].toggle();
+//!             leds[(i+2)%3].toggle();
+//!             delay.delay_ms(200);
+//!         }
+//!     }
+//! }
+//! ```
 #![no_std]
-#![feature(lang_items, unwind_attributes)]
+#![cfg_attr(not(feature = "docs"), feature(lang_items, unwind_attributes))]
 #![cfg_attr(feature = "docs", feature(extern_prelude))]
 
 extern crate atmega32u4;
@@ -7,13 +53,16 @@ extern crate atmega32u4;
 extern crate atmega32u4_hal;
 
 use atmega32u4_hal::delay;
+/// Delay type that is fixed to the leonardo's 16 MHz clock
 pub type Delay = delay::Delay<delay::MHz16>;
 
 pub mod pins;
 pub use pins::{Pins, DDR};
 
+/// ATmega32U4 peripherals
 pub use atmega32u4::Peripherals;
 
+/// Prelude from `atmega32u4-hal`
 pub mod prelude {
     pub use atmega32u4_hal::prelude::*;
 }

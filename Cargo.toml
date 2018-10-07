@@ -1,6 +1,6 @@
 [package]
 name = "arduino-leonardo"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Rahix <rahix@rahix.de>"]
 description = "Board Support Crate for Arduino Leonardo"
 license = "MIT OR Apache-2.0"

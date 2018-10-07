@@ -1,3 +1,4 @@
+//! Leonardo's Pins
 use atmega32u4;
 
 define_pins! {
