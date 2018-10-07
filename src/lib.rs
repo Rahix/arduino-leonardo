@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(lang_items, unwind_attributes)]
+#![cfg_attr(feature = "docs", feature(extern_prelude))]
 
 extern crate atmega32u4;
 #[macro_use]
@@ -23,7 +24,11 @@ pub mod std {
 
     #[lang = "eh_personality"]
     #[no_mangle]
-    pub unsafe extern "C" fn rust_eh_personality(_state: (), _exception_object: *mut (), _context: *mut ()) -> () {
+    pub unsafe extern "C" fn rust_eh_personality(
+        _state: (),
+        _exception_object: *mut (),
+        _context: *mut (),
+    ) -> () {
     }
 
     #[lang = "panic_fmt"]

@@ -1,15 +1,33 @@
 [package]
-authors = ["Rahix <rahix@rahix.de>"]
 name = "arduino-leonardo"
 version = "0.1.0"
+authors = ["Rahix <rahix@rahix.de>"]
+description = "Board Support Crate for Arduino Leonardo"
+license = "MIT OR Apache-2.0"
+
+documentation = "https://docs.rs/arduino-leonardo"
+repository = "https://github.com/Rahix/arduino-leonardo"
+readme = "README.md"
+
+keywords = ["atmega", "avr", "arduino", "hal", "leonardo"]
+categories = ["embedded", "hardware-support", "no-std"]
 
 [features]
 docs = ["atmega32u4-hal/docs"]
 
 [dependencies]
 atmega32u4 = "0.1.3"
-# atmega32u4 = { path="../atmega32u4" }
+atmega32u4-hal = "0.1.2"
 
-[dependencies.atmega32u4-hal]
-optional = false
-path = "../atmega32u4-hal"
+[profile.dev]
+codegen-units = 1
+lto = true
+incremental = false
+
+[profile.release]
+codegen-units = 1
+lto = true
+incremental = false
+
+[package.metadata.docs.rs]
+features = ["docs"]
