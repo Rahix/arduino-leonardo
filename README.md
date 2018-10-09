@@ -4,6 +4,9 @@ Board support crate for *Arduino Leonardo*.  Reexports types to more closely
 match the leonardo's labeling.
 
 ### Example
+To see the following example in action, take a look at the
+[leonardo-examples](https://github.com/Rahix/leonardo-examples) repo.
+
 ```rust
 #![no_std]
 #![no_main]
