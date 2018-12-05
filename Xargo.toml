@@ -1,2 +1,0 @@
-[dependencies]
-core = { git = "https://github.com/Rahix/libcore-avr", branch = "rust-26015da0" }
