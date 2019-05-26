@@ -1,3 +1,10 @@
+# Deprecation Note:
+**This crate will soon be deprecated in favor of [`avr-hal`](https://github.com/Rahix/avr-hal).**
+
+`avr-hal` is a new approach to writing the HAL crate, that was designed with support for many AVR microcontrollers in mind.  The macros have been factored out into a common crate named `avr-hal-generic`, which the board HALs then use to instanciate their respective peripherals.  Board support crates like this one are also kept in that repository now.
+
+---
+
 # `arduino-leonardo` [![crates.io page](http://meritbadge.herokuapp.com/arduino-leonardo)](https://crates.io/crates/arduino-leonardo) [![docs.rs](https://docs.rs/arduino-leonardo/badge.svg)](https://docs.rs/arduino-leonardo)
 
 Board support crate for *Arduino Leonardo*.  Reexports types to more closely
